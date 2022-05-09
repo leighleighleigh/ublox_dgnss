@@ -1,0 +1,16 @@
+[Unit]
+Description=Nova Base RTK Service
+Requires=network-online.target network.target local-fs.target
+After=network-online.target network.target local-fs.target
+
+[Service]
+Type=forking
+User=ubuntu
+Group=users
+ExecStart=/home/ubuntu/start_service.sh
+ExecStop=/home/ubuntu/stop_service.sh
+TimeoutStartSec=5
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
